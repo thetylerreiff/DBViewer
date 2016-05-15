@@ -1,2 +1,10 @@
 
 *.vbs
+
+*.txt
+
+*.jar
+
+*.properties
+
+*.class

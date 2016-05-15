@@ -31,6 +31,7 @@ public class DBV_View {
 	
 	public static void createGUI() {
 		f = new JFrame("DB Viewer");
+		f.setName("Dashboard Viewer");
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setSize(200, 120);
 		f.setAlwaysOnTop(false);
@@ -61,12 +62,14 @@ public class DBV_View {
 		quitDashboard = new JMenuItem("Quit Dashbaord");
 		quitDashboard.addActionListener(new DBV_Controller());
 		menu.add(quitDashboard);
-			
+		
+		/*	
 		infoButton = new JButton("Learn More");
 		infoButton.setFont(new Font("Arial", Font.BOLD, 32));
 		infoButton.setPreferredSize(new Dimension(60, 40));
 		infoButton.addActionListener(new DBV_Controller());
-
+		 */
+		
 		f.setJMenuBar(menuBar);
 		//f.add(infoButton);
 		f.setVisible(true); 

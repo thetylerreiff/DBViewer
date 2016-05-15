@@ -20,7 +20,7 @@ public class DBV_Controller implements ActionListener {
 		refreshTimer();
 		IsKeyPressed.startKeyObserver();
 	}
-	// TR- This time running the execution logic 
+	// TR: This time running the execution logic 
 	public static void executionTimer() {
 		ActionListener taskPerformer = new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
@@ -32,7 +32,7 @@ public class DBV_Controller implements ActionListener {
 		timer.start();
 	}
 	
-	// TR- This timer refreshes the app ever one hour 
+	// TR: This timer refreshes the app ever one hour 
 	public static void refreshTimer() {
 		ActionListener taskPerformer = new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {

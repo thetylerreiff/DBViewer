@@ -25,9 +25,9 @@ public class DBV_Model {
 		System.out.print("\nDashboard Running: " + dashboardRunning + " \n");	
 	    System.out.println("Host is Reachable: " + hostIsReachable);
 	    
-	    // compare lastMove time to current time
-	 	// if greater then 30 seconds run login batch file
-		if (lastMoveModel == 0) {
+	    // TR:  compare lastMove time to current time
+	 	// TR:  if greater then 30 seconds run login batch file
+		if (lastMoveModel == 0 ) {
 			return;
 		}
 		else if (hostIsReachable == false) {
@@ -61,6 +61,7 @@ public class DBV_Model {
 		boolean hostIsReachable = false;
 		InetAddress byName;
 		
+		// TR: Try to reach host, 1 sec timeout 
 		try {
 			byName = InetAddress.getByName("192.168.1.149");
 		    hostIsReachable = byName.isReachable(1000);
