@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.net.InetAddress;
+import java.util.Arrays;
 import java.util.Hashtable;
 import java.util.Properties;
 
@@ -64,7 +65,7 @@ public class DBV_Model {
 		// TR: Try to reach host, 1 sec timeout 
 		try {
 			byName = InetAddress.getByName("192.168.1.149");
-		    hostIsReachable = byName.isReachable(1000);
+		    hostIsReachable = byName.isReachable(800);
 		} 
 		catch (IOException e) {
 			hostIsReachable = false;
@@ -87,7 +88,6 @@ public class DBV_Model {
 			loginExe = buildLoginVBScript(p.getProperty("username"), p.getProperty("password"));
 
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			DBV_View.displayAlert("ERROR!", e1.toString());
 			e1.printStackTrace();
 		}
@@ -99,7 +99,7 @@ public class DBV_Model {
 			fileOut.flush();
 			fileOut.close();
 			
-			// TODO TR: run vbscript
+		// TR: Run login vbs
 			Runtime.getRuntime().exec("wscript login.vbs");
 		} catch (IOException e) {
 			DBV_View.displayAlert("ERROR!", e.toString());
@@ -107,7 +107,7 @@ public class DBV_Model {
 		}
 	}
 
-	public static String buildLoginVBScript(String user, String pass) {	
+	private static String buildLoginVBScript(String user, String pass) {	
 		// TR: build a batch file to execute an autologin on the defult system browser
 		String batchFileText =
 				"Call Main"  
@@ -132,8 +132,43 @@ public class DBV_Model {
 		return batchFileText;
 	}
 	
-	public static void startInfoSpeech() {
-		System.out.print("Info Speech");
+	public static boolean isPasswordCorrect(char[] input) {
+	    boolean isCorrect = false;
+	    Properties p = new Properties();
+	    InputStream propInput = null;
+	    char[] correctPassword = null;
+	    
+	    try {
+			propInput = new FileInputStream("config.properties");
+			p.load(propInput);	
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    
+		String strPass = p.getProperty("password");
+		System.out.println("strPass:" + strPass);
+		correctPassword = strPass.toCharArray();
+		System.out.println("correctPassword:" + correctPassword.toString() + "\n");
+		System.out.println(input.toString());
+
+
+	    if (input.length != correctPassword.length) {
+	        isCorrect = false;
+	        System.out.println("Passwords dont match");
+	    } else {
+	        isCorrect = Arrays.equals (input, correctPassword);
+	        System.out.println("password" + isCorrect);
+	    }
+
+	    //Zero out the password.
+	    Arrays.fill(correctPassword,'0');
+
+	    return isCorrect;
+	}
+	
+	public static void startLearnMoreSpeech() {
+		System.out.print("Learn More Speech");
 	}
 	
 	public static void appWillHide() {
@@ -157,7 +192,6 @@ public class DBV_Model {
 			Runtime.getRuntime().exec("wscript closeBrowser.vbs");
 		}
 		catch (IOException e) {
-			// TODO Auto-generated catch block
 			DBV_View.displayAlert("ERROR!", e.toString());
 			e.printStackTrace();
 		}
