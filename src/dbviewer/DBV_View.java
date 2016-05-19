@@ -97,24 +97,23 @@ public class DBV_View {
 		}
 	}
 	
-	public static char[] passwordCheckWindow() {		
+	public static String passwordCheckWindow() {		
 		JPanel panel = new JPanel(new BorderLayout(10, 5));
 		
 		JPanel controls = new JPanel(new GridLayout(0, 1, 2, 2));
 	    controls.setPreferredSize(new Dimension(200, 50));
-	    JPasswordField password = new JPasswordField();
+	    JTextField password = new JTextField();
 	    controls.add(password);
 	    panel.add(controls, BorderLayout.CENTER);
 	    
     	JOptionPane.showMessageDialog(f, panel, "Set Credentials", JOptionPane.OK_CANCEL_OPTION);
 
-	    return password.getPassword();
+	    return password.getText();
 	 }
 	
 	public static void changeCredentialsWindow() {
 		Properties p = new Properties();
 		OutputStream output = null;
-		char[] pass = null;
 		
 		JPanel panel = new JPanel(new BorderLayout(10, 5));
 		
@@ -127,7 +126,7 @@ public class DBV_View {
 	    controls.setPreferredSize(new Dimension(200, 50));
 	    JTextField username = new JTextField();
 	    controls.add(username);
-	    JPasswordField password = new JPasswordField();
+	    JTextField password = new JTextField();
 	    controls.add(password);
 	    panel.add(controls, BorderLayout.CENTER);
 	    
@@ -137,8 +136,8 @@ public class DBV_View {
 	    	output = new FileOutputStream("config.properties");
 	    	
 	    	p.setProperty("username", username.getText());
-	    	pass = password.getPassword();
-	    	p.setProperty("password", pass.toString());
+	    	;
+	    	p.setProperty("password", password.getText());
 	
 			p.store(output, null);
 		} catch (IOException e) {

@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.net.InetAddress;
-import java.util.Arrays;
 import java.util.Hashtable;
 import java.util.Properties;
 
@@ -133,11 +132,11 @@ public class DBV_Model {
 		return batchFileText;
 	}
 	
-	public static boolean isPasswordCorrect(char[] input) {
+	public static boolean isPasswordCorrect(String input) {
 	    boolean isCorrect = false;
 	    Properties p = new Properties();
 	    InputStream propInput = null;
-	    char[] correctPassword = null;
+	    String passInput = input;
 	    
 	    try {
 			propInput = new FileInputStream("config.properties");
@@ -148,22 +147,19 @@ public class DBV_Model {
 		}
 	    
 		String strPass = p.getProperty("password");
-		System.out.println("strPass:" + strPass);
-		correctPassword = strPass.toCharArray();
-		System.out.println("correctPassword:" + correctPassword.toString() + "\n");
-		System.out.println(input.toString());
-
-
-	    if (input.length != correctPassword.length) {
-	        isCorrect = false;
-	        System.out.println("Passwords dont match");
-	    } else {
-	        isCorrect = Arrays.equals (input, correctPassword);
-	        System.out.println("password" + isCorrect);
-	    }
+		System.out.println("Correct Password: " + strPass);
+		System.out.println("Password Input: " + passInput);
+		System.out.println(strPass.equals(passInput));
+		
+		if(strPass.length() != passInput.length()){
+			isCorrect = false;
+		}
+		else {
+			isCorrect = strPass.equals(passInput);
+		}
+	   
 
 	    //Zero out the password.
-	    Arrays.fill(correctPassword,'0');
 
 	    return isCorrect;
 	}
