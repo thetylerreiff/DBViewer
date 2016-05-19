@@ -13,6 +13,7 @@ import java.util.Arrays;
 import java.util.Hashtable;
 import java.util.Properties;
 
+
 public class DBV_Model {
 	static long lastMoveModel;
 	static boolean dashboardRunning = false;
@@ -168,7 +169,7 @@ public class DBV_Model {
 	}
 	
 	public static void startLearnMoreSpeech() {
-		System.out.print("Learn More Speech");
+		System.out.println("Speak");
 	}
 	
 	public static void appWillHide() {

@@ -49,8 +49,8 @@ public class DBV_Controller implements ActionListener {
 		
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == DBV_View.setCredentials) {
+			System.out.println("Set Credentials Selected");
 			// if (DBV_Model.isPasswordCorrect(DBV_View.passwordCheckWindow())) {
-				System.out.println("Set Credentials Selected");
 				DBV_View.changeCredentialsWindow();
 			//}
 		} 
@@ -60,21 +60,21 @@ public class DBV_Controller implements ActionListener {
 		}
 		else if (e.getSource() == DBV_View.hideDashboard) {
 			System.out.println("Hide Dashboard Selected");
-			if (DBV_Model.isPasswordCorrect(DBV_View.passwordCheckWindow())) {
+			//if (DBV_Model.isPasswordCorrect(DBV_View.passwordCheckWindow())) {
 				DBV_Model.appWillHide();
-			}
+			//}
 		} 
 		else if (e.getSource() == DBV_View.quitDashboard) {
 			System.out.println("Close Dashboard Selected");
-			if (DBV_Model.isPasswordCorrect(DBV_View.passwordCheckWindow())) {
+			//if (DBV_Model.isPasswordCorrect(DBV_View.passwordCheckWindow())) {
 				DBV_Model.appWillClose();
-			}
+			//}
 		} 
 		else if (e.getSource() == DBV_View.setTTSText){
-			if (DBV_Model.isPasswordCorrect(DBV_View.passwordCheckWindow())) {
+			//if (DBV_Model.isPasswordCorrect(DBV_View.passwordCheckWindow())) {
 				System.out.println("Set Learn More Text Selected");
 				DBV_View.setLearnMoreText();
-			}
+			//}
 		}
 		else if (e.getSource() == DBV_View.infoButton) {
 			System.out.println("Info Button Selected");

@@ -169,7 +169,7 @@ public class DBV_View {
 		JPanel controls = new JPanel(new GridLayout(0, 1, 2, 2));
 	    controls.setPreferredSize(new Dimension(400, 300));
 	    JTextArea learnMoreTxt = new JTextArea();
-	    learnMoreTxt.setBounds(390, 290, 390, 290);
+	    learnMoreTxt.setLineWrap(true);
 	    try {
 			input = new FileInputStream("learnMore.properties");
 			p.load(input);
@@ -182,7 +182,7 @@ public class DBV_View {
 	    
 	    panel.add(controls, BorderLayout.CENTER);
 	    
-	    JOptionPane.showMessageDialog(f, panel, "Set Text to Speak", JOptionPane.OK_CANCEL_OPTION);
+	    JOptionPane.showConfirmDialog(f, panel, "Set Text to Speak", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
 	    
 	    try {
 	    	output = new FileOutputStream("learnMore.properties");
@@ -217,12 +217,15 @@ public class DBV_View {
 		}
 		// TR: Create the JPanel that displays the learn more window
 		JPanel panel = new JPanel();
-		panel.setPreferredSize(new Dimension(500, 400));
+		panel.setPreferredSize(new Dimension(700, 450));
+		
 		txtArea.setText(p.getProperty("learnMoretxt"));
 		txtArea.setEditable(false);
+		txtArea.setLineWrap(true);
+		txtArea.setPreferredSize(new Dimension(700,450));
 		panel.add(txtArea);
 		
-		JOptionPane.showMessageDialog(f, panel, "Title", JOptionPane.OK_OPTION);
+		JOptionPane.showConfirmDialog(f, panel, "Learn More", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
 		
 	}
 	
