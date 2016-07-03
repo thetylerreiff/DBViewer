@@ -64,7 +64,7 @@ public class DBV_Model {
 		
 		// TR: Try to reach host, 1 sec timeout 
 		try {
-			byName = InetAddress.getByName("192.168.1.149");
+			byName = InetAddress.getByName("Host Name Here");
 		    hostIsReachable = byName.isReachable(800);
 		} 
 		catch (IOException e) {
@@ -114,7 +114,7 @@ public class DBV_Model {
 				+ "\nFunction Main"
 				+ "\nSet IE = WScript.CreateObject(\"InternetExplorer.Application\", \"IE_\")"
 				+ "\nIE.Visible = True"
-				+ "\nIE.Navigate \"http://192.168.1.149/login\""
+				+ "\nIE.Navigate \"destination url\"" //TODO- set destination URL
 				+ "\nWait IE"
 				+ "\nWith IE.Document"
 				+ "\n.getElementByID(\"username\").value = \"" + user + "\"" 
