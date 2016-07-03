@@ -1,10 +1,10 @@
 # Dashboard Viewer
 
-Dashboard Viewer 1.2.2
+Dashboard Viewer 2.0.2
 
 (c) Tyler Reiff, 2016
 
-Dashboard Viewer is a Java build application used to view the data for JCI controllers. 
+Dashboard Viewer is a Java build application used to view an static webpage after no interaction after 30 seconds. 
 
 ###How to use 
 
